@@ -1,229 +1,340 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Bizbooks Solutions | Job Application</title>
-  <style>
-    body { font-family: Arial; padding: 20px; max-width: 900px; margin: auto; }
-    label { font-weight: bold; display:block; margin-top:15px; }
-    input, select, textarea { width:100%; padding:8px; margin-top:5px; }
-    .hidden { display:none; }
-    button { margin-top:20px; padding:12px; background:#1a73e8; color:#fff; border:none; width:100%; font-size:16px; }
-  </style>
+<meta charset="UTF-8">
+<title>Bizbooks Solutions | Hiring Form</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f5f7fa;
+}
+.container{
+  max-width:1000px;
+  margin:auto;
+  background:#fff;
+  padding:30px;
+  border-radius:8px;
+}
+h2,h3{
+  text-align:center;
+}
+.section{
+  margin-top:30px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+label{
+  font-weight:bold;
+}
+.req{
+  color:red;
+}
+input,select,textarea{
+  width:100%;
+  padding:8px;
+  margin-top:5px;
+}
+textarea{resize:vertical;}
+.hidden{display:none;}
+button{
+  width:100%;
+  padding:14px;
+  background:#1a73e8;
+  color:#fff;
+  font-size:16px;
+  border:none;
+  border-radius:5px;
+  margin-top:30px;
+}
+@media(max-width:768px){
+  .grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
+
 <body>
+<div class="container">
 
 <h2>Bizbooks Solutions Private Limited</h2>
 <h3>Candidate Hiring Application Form</h3>
 
 <form id="jobForm">
 
-<!-- BASIC INFO -->
-<label>Application Type</label>
-<select name="applicationType">
-  <option>India Application</option>
-  <option>Canada Application</option>
-  <option>US Application</option>
-  <option>Other Application</option>
+<!-- BASIC DETAILS -->
+<div class="section">
+<div class="grid">
+
+<div>
+<label>Application Type <span class="req">*</span></label>
+<select name="applicationType" required>
+<option>India Application</option>
+<option>Canada Application</option>
+<option>US Application</option>
+<option>Other Application</option>
 </select>
+</div>
 
-<label>Email</label>
+<div>
+<label>Email <span class="req">*</span></label>
 <input type="email" name="email" required>
+</div>
 
-<label>Full Name</label>
+<div>
+<label>Full Name <span class="req">*</span></label>
 <input type="text" name="fullName" required>
+</div>
 
-<label>Contact Number</label>
+<div>
+<label>Contact Number <span class="req">*</span></label>
 <input type="text" name="contact" required>
+</div>
 
+<div>
 <label>Gender</label>
 <select name="gender">
-  <option>Male</option>
-  <option>Female</option>
-  <option>Other</option>
+<option>Male</option><option>Female</option><option>Other</option>
 </select>
+</div>
 
+<div>
 <label>Marital Status</label>
 <select name="maritalStatus">
-  <option>Single</option>
-  <option>Married</option>
+<option>Single</option><option>Married</option>
 </select>
+</div>
 
+<div>
 <label>Date of Birth</label>
 <input type="date" name="dob">
+</div>
 
+<div>
 <label>Qualifications</label>
 <input type="text" name="qualifications">
+</div>
 
-<label>Current Address</label>
-<textarea name="currentAddress"></textarea>
+</div>
+</div>
 
-<label>Can relocate to Mohali?</label>
+<!-- ADDRESS -->
+<div class="section">
+<div class="grid">
+
+<div>
+<label>Current Address (Search)</label>
+<input type="text" name="currentAddress" placeholder="Start typing address">
+</div>
+
+<div>
+<label>Relocate to Mohali?</label>
 <select name="relocateMohali">
-  <option>No</option>
-  <option>Yes</option>
+<option>No</option><option>Yes</option>
 </select>
+</div>
 
-<label>Permanent Address</label>
-<textarea name="permanentAddress"></textarea>
+<div>
+<label>Permanent Address (Search)</label>
+<input type="text" name="permanentAddress" placeholder="Start typing address">
+</div>
 
-<!-- VEHICLE -->
+<div>
 <label>Own Vehicle?</label>
 <select name="ownVehicle" id="ownVehicle">
-  <option>No</option>
-  <option>Yes</option>
+<option>No</option><option>Yes</option>
 </select>
+</div>
 
-<div id="vehicleTypeDiv" class="hidden">
-  <label>Vehicle Type</label>
-  <input type="text" name="vehicleType">
+<div id="vehicleDiv" class="hidden">
+<label>Vehicle Type</label>
+<input type="text" name="vehicleType">
+</div>
+
+</div>
 </div>
 
 <!-- ROLE -->
+<div class="section">
+<div class="grid">
+
+<div>
 <label>Current Role</label>
 <input type="text" name="currentRole">
-
-<label>Role Applying For</label>
-<input type="text" name="roleApplying">
-
-<label>Total Experience Years</label>
-<select name="totalExperience" id="experience">
-  <option>Fresher</option>
-  <option>&lt; 1 year</option>
-  <option>2–4 years</option>
-  <option>5–7 years</option>
-  <option>7+ years</option>
-</select>
-
-<!-- EXPERIENCED ONLY -->
-<div id="experiencedSection" class="hidden">
-  <label>Employment Status</label>
-  <select name="employmentStatus">
-    <option>Employed</option>
-    <option>Unemployed</option>
-    <option>Self-employed</option>
-  </select>
-
-  <label>Accounting Tools</label>
-  <textarea name="tools"></textarea>
-
-  <label>Tax Forms / Tax Types Known</label>
-  <textarea name="taxTypes"></textarea>
-
-  <label>Previous Company Name</label>
-  <input type="text" name="prevCompany">
-
-  <label>Previous Company Email</label>
-  <input type="email" name="prevEmail">
-
-  <label>Previous Company Contact</label>
-  <input type="text" name="prevContact">
-
-  <label>Current Salary</label>
-  <input type="text" name="currentSalary">
-
-  <label>Expected Salary</label>
-  <input type="text" name="expectedSalary">
-
-  <label>Salary Proof Available?</label>
-  <select name="salaryProof">
-    <option>No</option>
-    <option>Yes</option>
-  </select>
 </div>
 
-<!-- FRESHER ONLY -->
-<div id="fresherSection" class="hidden">
-  <label>Basic Accounting Knowledge</label>
-  <select name="basicKnowledge">
-    <option>Yes</option>
-    <option>No</option>
-  </select>
-
-  <label>Willing to Pay Training Fees?</label>
-  <select name="trainingFees">
-    <option>Yes</option>
-    <option>No</option>
-  </select>
-
-  <label>Stipend Comfort</label>
-  <select name="stipendComfort">
-    <option>Yes</option>
-    <option>No</option>
-  </select>
-
-  <label>Expected Stipend</label>
-  <input type="text" name="expectedStipend">
+<div>
+<label>Role Applying For <span class="req">*</span></label>
+<input type="text" name="roleApplying" required>
 </div>
 
-<!-- OTHER -->
-<label>Reference Source</label>
-<select name="referenceSource">
-  <option>Friend</option>
-  <option>Employee</option>
-  <option>LinkedIn</option>
-  <option>Indeed</option>
-  <option>Website</option>
-  <option>Google</option>
-  <option>Other</option>
+<div>
+<label>Total Experience Years <span class="req">*</span></label>
+<select name="totalExperience" id="experience" required>
+<option>Fresher</option>
+<option>&lt; 1 year</option>
+<option>2–4 years</option>
+<option>5–7 years</option>
+<option>7+ years</option>
 </select>
+</div>
 
-<label>Reference Name</label>
-<input type="text" name="referenceName">
+</div>
+</div>
 
-<label>Office Interview Availability</label>
-<input type="datetime-local" name="officeInterview">
+<!-- EXPERIENCED -->
+<div id="experiencedSection" class="section hidden">
+<div class="grid">
 
+<div>
+<label>Employment Status</label>
+<select name="employmentStatus">
+<option>Employed</option>
+<option>Unemployed</option>
+<option>Self-employed</option>
+</select>
+</div>
+
+<div>
+<label>Accounting Tools (Search)</label>
+<input list="tools" name="tools">
+<datalist id="tools">
+<option>Tally</option><option>QuickBooks</option><option>Xero</option>
+<option>Sage</option><option>CaseWare</option>
+</datalist>
+</div>
+
+<div>
+<label>Tax Forms / Types (Search)</label>
+<input list="taxForms" name="taxTypes">
+<datalist id="taxForms">
+<option>1040</option><option>T2</option><option>T1</option>
+<option>GST</option><option>HST</option><option>Payroll</option>
+</datalist>
+</div>
+
+<div>
+<label>Previous Company Name</label>
+<input type="text" name="prevCompany">
+</div>
+
+<div>
+<label>Current Salary</label>
+<input type="text" name="currentSalary">
+</div>
+
+<div>
+<label>Expected Salary</label>
+<input type="text" name="expectedSalary">
+</div>
+
+</div>
+</div>
+
+<!-- FRESHER -->
+<div id="fresherSection" class="section hidden">
+<div class="grid">
+
+<div>
+<label>Basic Accounting Knowledge</label>
+<select name="basicKnowledge">
+<option>Yes</option><option>No</option>
+</select>
+</div>
+
+<div>
+<label>Training Fees Willing</label>
+<select name="trainingFees">
+<option>Yes</option><option>No</option>
+</select>
+</div>
+
+<div>
+<label>Stipend Comfort</label>
+<select name="stipendComfort">
+<option>Yes</option><option>No</option>
+</select>
+</div>
+
+<div>
+<label>Expected Stipend</label>
+<input type="text" name="expectedStipend">
+</div>
+
+</div>
+</div>
+
+<!-- INTERVIEW -->
+<div class="section">
+<div class="grid">
+
+<div>
+<label>Office Interview Availability <span class="req">*</span></label>
+<input type="datetime-local" name="officeInterview" required>
+</div>
+
+<div>
 <label>Online Interview Availability</label>
 <input type="datetime-local" name="onlineInterview">
-
-<label>Availability to Join</label>
-<select name="joinAvailability">
-  <option>Immediate</option>
-  <option>Within 1 week</option>
-  <option>Within 2 weeks</option>
-  <option>Within 1 month</option>
-  <option>Within 2 months</option>
-</select>
-
-<label>Shift Comfortable (US/Canada)</label>
-<select name="shiftComfort">
-  <option>Yes</option>
-  <option>No</option>
-</select>
-
-<label>Any Exam Plans?</label>
-<select name="examPlans" id="examPlans">
-  <option>No</option>
-  <option>Yes</option>
-</select>
-
-<div id="examDetailsDiv" class="hidden">
-  <label>Exam Details</label>
-  <input type="text" name="examDetails">
 </div>
 
-<label>LinkedIn Profile URL</label>
-<input type="url" name="linkedin">
+<div>
+<label>Availability to Join <span class="req">*</span></label>
+<select name="joinAvailability" required>
+<option>Immediate</option><option>Within 1 week</option>
+<option>Within 2 weeks</option><option>Within 1 month</option>
+<option>Within 2 months</option>
+</select>
+</div>
 
-<label>Upload Resume</label>
+<div>
+<label>Shift Comfortable (US/Canada) <span class="req">*</span></label>
+<select name="shiftComfort" required>
+<option>Yes</option><option>No</option>
+</select>
+</div>
+
+<div>
+<label>Exam Plans?</label>
+<select name="examPlans" id="examPlans">
+<option>No</option><option>Yes</option>
+</select>
+</div>
+
+<div id="examDiv" class="hidden">
+<label>Exam Details</label>
+<input type="text" name="examDetails">
+</div>
+
+</div>
+</div>
+
+<!-- RESUME -->
+<div class="section">
+<label>Upload Resume <span class="req">*</span></label>
 <input type="file" name="resume" required>
+</div>
 
 <button type="submit">Submit Application</button>
 
 </form>
+</div>
 
 <script>
-document.getElementById("ownVehicle").onchange = e =>
-  document.getElementById("vehicleTypeDiv").classList.toggle("hidden", e.target.value !== "Yes");
-
-document.getElementById("experience").onchange = e => {
-  document.getElementById("fresherSection").classList.toggle("hidden", e.target.value !== "Fresher");
-  document.getElementById("experiencedSection").classList.toggle("hidden", e.target.value === "Fresher");
+document.getElementById("ownVehicle").onchange=e=>{
+document.getElementById("vehicleDiv").classList.toggle("hidden",e.target.value!=="Yes");
 };
 
-document.getElementById("examPlans").onchange = e =>
-  document.getElementById("examDetailsDiv").classList.toggle("hidden", e.target.value !== "Yes");
+document.getElementById("experience").onchange=e=>{
+document.getElementById("fresherSection").classList.toggle("hidden",e.target.value!=="Fresher");
+document.getElementById("experiencedSection").classList.toggle("hidden",e.target.value==="Fresher");
+};
+
+document.getElementById("examPlans").onchange=e=>{
+document.getElementById("examDiv").classList.toggle("hidden",e.target.value!=="Yes");
+};
 </script>
 
 </body>
