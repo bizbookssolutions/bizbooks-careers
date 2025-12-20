@@ -12,7 +12,25 @@
 
 <button onclick="login()">Login</button>
 
-<script src="firebase.js"></script>
+<script type="module">
+  import { auth } from "./firebase.js";
+  import { signInWithEmailAndPassword } from
+    "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+  window.login = async () => {
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        email.value,
+        password.value
+      );
+      alert("Login successful");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+</script>
+
 
 <script type="module">
   import { signInWithEmailAndPassword } from
