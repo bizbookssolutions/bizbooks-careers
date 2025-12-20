@@ -60,9 +60,11 @@ button{width:100%;background:#2563eb;color:#fff;border:none;padding:14px;margin-
 <hr>
 <h2>Job Application</h2>
 <form 
+  id="jobForm"
   method="POST"
   action="https://script.google.com/macros/s/AKfycbwPC3M9pD7mK61MlS0wbn6sy2fQbT0C4NccrDLChYdcSt8w7TZ-SHH-RT6fTyZUGx5m/exec"
   enctype="multipart/form-data">
+
 
 <!-- BASIC DETAILS -->
 <h3>Basic Details</h3>
@@ -314,11 +316,11 @@ refSource.onchange=()=>refOther.style.display=refSource.value==="Other"?"block":
 examPlans.onchange=()=>examDetailsBlock.style.display=examPlans.value==="No"?"none":"block";
 currentAddress.oninput=()=>relocateBlock.style.display=currentAddress.value.toLowerCase().includes("mohali")?"none":"block";
 
-jobForm.onsubmit = e => {
-  if(!iti.isValidNumber()){
+jobForm.onsubmit = function (e) {
+  if (!iti.isValidNumber()) {
     alert("Please enter a valid phone number");
     e.preventDefault();
-    return;
+    return false;
   }
   fullPhone.value = iti.getNumber();
 };
