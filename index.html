@@ -311,16 +311,56 @@ refSource.onchange=()=>refOther.style.display=refSource.value==="Other"?"block":
 examPlans.onchange=()=>examDetailsBlock.style.display=examPlans.value==="No"?"none":"block";
 currentAddress.oninput=()=>relocateBlock.style.display=currentAddress.value.toLowerCase().includes("mohali")?"none":"block";
 
-jobForm.onsubmit=async e=>{
-e.preventDefault();
-if(!iti.isValidNumber()){alert("Please enter a valid phone number");return;}
-fullPhone.value=iti.getNumber();
-await fetch("https://script.google.com/macros/s/AKfycbwPC3M9pD7mK61MlS0wbn6sy2fQbT0C4NccrDLChYdcSt8w7TZ-SHH-RT6fTyZUGx5m/exec",
-{method:"POST",body:new FormData(jobForm)});
-alert("Application submitted successfully");
-jobForm.reset();
-};
+  <script>
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=()=>resolve(reader.result.split(",")[1]);
+    reader.onerror=reject;
+    reader.readAsDataURL(file);
+  });
+}
 </script>
+  
+jobForm.onsubmit = async e => {
+  e.preventDefault();
+
+  if(!iti.isValidNumber()){
+    alert("Please enter a valid phone number");
+    return;
+  }
+
+  fullPhone.value = iti.getNumber();
+
+  const resumeFile = document.querySelector('input[name="resume"]').files[0];
+  if(!resumeFile){
+    alert("Resume is required");
+    return;
+  }
+
+  const base64Resume = await fileToBase64(resumeFile);
+
+  const data = Object.fromEntries(new FormData(jobForm).entries());
+
+  const payload = {
+    ...data,
+    resumeBase64: base64Resume,
+    resumeName: resumeFile.name,
+    resumeType: resumeFile.type
+  };
+
+  await fetch(
+    "https://script.google.com/macros/s/AKfycbwPC3M9pD7mK61MlS0wbn6sy2fQbT0C4NccrDLChYdcSt8w7TZ-SHH-RT6fTyZUGx5m/exec",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }
+  );
+
+  alert("Application submitted successfully");
+  jobForm.reset();
+};
 
 </body>
 </html>
