@@ -50,13 +50,7 @@ button{width:100%;background:#2563eb;color:#fff;border:none;padding:14px;margin-
 
 <body>
 <div class="form-card">
-<!-- <h2>BIZBOOKS SOLUTIONS PVT. LTD.</h2> -->
- <img
-  src="https://raw.githubusercontent.com/bizbookssolutions/bizbooks-hiring-form/refs/heads/main/images/newlogo-05.png"
-  alt="Bizbooks Logo"
-  width="230"
-  style="display:block;margin:10px auto;"
->
+<h2>BIZBOOKS SOLUTIONS PVT. LTD.</h2>
 <hr>
 <h2>Job Application</h2>
 <form id="jobForm" enctype="multipart/form-data">
@@ -315,7 +309,7 @@ jobForm.onsubmit=async e=>{
 e.preventDefault();
 if(!iti.isValidNumber()){alert("Please enter a valid phone number");return;}
 fullPhone.value=iti.getNumber();
-await fetch("https://script.google.com/macros/s/AKfycbxA06N9WeudsCNwyudFnuF7F_SDcMsNEr0FOX4996x7Prrax_kqZ0D0AwAEtWMNSw0l/exec",
+await fetch("https://script.google.com/macros/s/AKfycbzAc8Z9MIjedGpl0a2s7n_Qt7fcwts1AjjJZi2ooDXrrTq0bC-UI0HD9dJ52FrzMSVx/exec",
 {method:"POST",body:new FormData(jobForm)});
 alert("Application submitted successfully");
 jobForm.reset();
