@@ -37,7 +37,6 @@
       justify-content: center;
     }
 
-    /* HEADER */
     .hero {
       text-align: center;
       margin-bottom: 28px;
@@ -62,7 +61,6 @@
       line-height: 1.6;
     }
 
-    /* CARD */
     .card {
       background: var(--card);
       border-radius: 18px;
@@ -95,7 +93,6 @@
       margin: 0;
     }
 
-    /* BUTTONS */
     .btn {
       margin-top: 18px;
       padding: 12px 26px;
@@ -122,7 +119,6 @@
       border: 1.5px solid var(--brand);
     }
 
-    /* SECTIONS */
     .section {
       margin-top: 28px;
       padding-top: 18px;
@@ -144,7 +140,6 @@
 
     li { margin-bottom: 4px; }
 
-    /* SHARE ICONS */
     .share-icons {
       display: flex;
       gap: 14px;
@@ -161,11 +156,6 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background 0.15s ease;
-    }
-
-    .icon-btn:hover {
-      background: #f1f5f9;
     }
 
     .icon-btn svg {
@@ -174,12 +164,14 @@
       stroke: var(--text-main);
     }
 
-    /* FOOTER */
     footer {
       margin-top: 24px;
       padding-top: 14px;
       border-top: 1px solid var(--border);
       font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
     footer a {
@@ -188,16 +180,22 @@
       font-weight: 500;
     }
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .apply-grid {
-        grid-template-columns: 1fr;
-      }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
+    }
 
-      .page {
-        height: auto;
-        padding: 24px 16px;
-      }
+    @media (max-width: 768px) {
+      .apply-grid { grid-template-columns: 1fr; }
+      .page { height: auto; }
     }
   </style>
 </head>
@@ -205,9 +203,8 @@
 
 <div class="page">
 
-  <!-- HERO -->
   <div class="hero">
-    <img src="https://raw.githubusercontent.com/bizbookssolutions/bizbooks-careers/main/images/newlogo-05.png" alt="Bizbooks Solutions">
+    <img src="https://raw.githubusercontent.com/bizbookssolutions/bizbooks-careers/main/images/newlogo-05.png">
     <h1>Careers at Bizbooks Solutions</h1>
     <p>
       We work with accounting and finance professionals who value accuracy,
@@ -215,20 +212,23 @@
     </p>
   </div>
 
-  <!-- CARD -->
   <div class="card">
 
     <div class="apply-grid">
       <div class="apply-box">
         <h3>Resume Upload</h3>
         <p>Secure submission through Google Forms. Recommended for faster and more accurate review.</p>
-        <a class="btn primary" href="https://forms.gle/hUnCAfShgdWSAoSQ9" target="_blank">Apply Now</a>
+        <a class="btn primary" href="https://forms.gle/hUnCAfShgdWSAoSQ9" target="_blank">
+          Apply via Resume Upload
+        </a>
       </div>
 
       <div class="apply-box">
         <h3>Resume Link Submission</h3>
         <p>Submit a link to your resume or profile. Please ensure access is set to “Anyone with the link can view.”</p>
-        <a class="btn outline" href="https://forms.gle/TsRFMGhJ3Ba6UNts9" target="_blank">Apply Now</a>
+        <a class="btn outline" href="https://forms.gle/TsRFMGhJ3Ba6UNts9" target="_blank">
+          Apply via Resume Link
+        </a>
       </div>
     </div>
 
@@ -244,44 +244,65 @@
     <div class="section">
       <div class="section-title">Share this opportunity</div>
       <div class="share-icons">
+
         <!-- Copy -->
         <div class="icon-btn" onclick="copyLink()" title="Copy link">
           <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16h8m-8-4h8m2 6H6a2 2 0 01-2-2V6a2 2 0 012-2h8l6 6v8a2 2 0 01-2 2z"/>
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M8 16h8M8 12h8m2 6H6a2 2 0 01-2-2V6a2 2 0 012-2h8l6 6v8a2 2 0 01-2 2z"/>
           </svg>
         </div>
 
-        <!-- Share -->
+        <!-- Native Share -->
         <div class="icon-btn" onclick="nativeShare()" title="Share">
           <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M12 3v14m0-14l-4 4m4-4l4 4"/>
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 5v14m0-14l-4 4m4-4l4 4"/>
           </svg>
         </div>
 
-        <!-- WhatsApp -->
-        <a class="icon-btn" href="https://wa.me/916280003434?text=Hello%20Bizbooks%20Solutions,%20I%20have%20a%20career%20related%20query." target="_blank" title="WhatsApp">
+        <!-- WhatsApp SHARE (NO NUMBER) -->
+        <a class="icon-btn"
+           href="https://wa.me/?text=Careers%20at%20Bizbooks%20Solutions:%20https://bizbookssolutions.github.io/bizbooks-careers/"
+           target="_blank" title="Share on WhatsApp">
           <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 21l1.5-4.5A8.5 8.5 0 1112 20.5c-1.6 0-3.1-.4-4.5-1L3 21z"/>
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 21l1.5-4.5A8.5 8.5 0 1112 20.5c-1.6 0-3.1-.4-4.5-1L3 21z"/>
           </svg>
         </a>
       </div>
     </div>
 
     <footer>
-      Email:
-      <a href="mailto:hiring.bizbookssolutions@outlook.com">
-        hiring.bizbookssolutions@outlook.com
+      <span>Email:
+        <a href="mailto:hiring.bizbookssolutions@outlook.com">
+          hiring.bizbookssolutions@outlook.com
+        </a>
+      </span>
+
+      <!-- WhatsApp CONTACT (ICON ONLY) -->
+      <a href="https://wa.me/916280003434" title="Contact on WhatsApp" target="_blank">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3 21l1.5-4.5A8.5 8.5 0 1112 20.5c-1.6 0-3.1-.4-4.5-1L3 21z"/>
+        </svg>
       </a>
     </footer>
 
   </div>
 </div>
 
+<div class="toast" id="toast">Link copied</div>
+
 <script>
   const pageUrl = "https://bizbookssolutions.github.io/bizbooks-careers/";
 
   function copyLink() {
-    navigator.clipboard.writeText(pageUrl);
+    navigator.clipboard.writeText(pageUrl).then(() => {
+      const toast = document.getElementById("toast");
+      toast.style.display = "block";
+      setTimeout(() => toast.style.display = "none", 2000);
+    });
   }
 
   function nativeShare() {
